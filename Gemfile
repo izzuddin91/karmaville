@@ -4,10 +4,10 @@ gem 'rails', '3.2.12'
 gem 'thin'
 
 gem 'bcrypt-ruby'
-
+gem 'minitest', '3.5.0'
 gem 'pg'
 gem 'jquery-rails'
-
+gem 'will_paginate', '~> 3.0.6'
 group :development do
   gem 'quiet_assets'
   gem 'activerecord-import'

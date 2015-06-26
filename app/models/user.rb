@@ -18,7 +18,10 @@ class User < ActiveRecord::Base
             :uniqueness => {:case_sensitive => false}
 
   def self.by_karma
-    joins(:karma_points).group('users.id').order('SUM(karma_points.value) DESC')
+    # joins(:karma_points).group('users.id').order('SUM(karma_points.value) DESC')
+
+    # joins(:karma_points).group('users.id').order('karma_points.value_cache DESC')
+    order('value_cache DESC')
   end
 
   def total_karma
@@ -28,4 +31,11 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def self.page(pagenum = 1)
+    offset = (pagenum - 1) * 10
+    self.limit(10).offset(offset)
+  end
+
+
 end
